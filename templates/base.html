@@ -1,19 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br"> {# Preferível usar pt-br para sites em português #}
 
 <head>
-    {% include 'parciais/_head.html' %}
-    <title>{% block titutlo %}{% endblock %}Hello, world!</title>
+    {# Inclui os metadados, links CSS, etc. comuns a todas as páginas #}
+    {% include 'parciais/_head.html' %} 
+    {# Define o título da página. Pode ser sobrescrito pelos templates filhos. #}
+    <title>{% block title %}Sua Loja Online{% endblock %}</title> 
 </head>
 
 <body>
+    {# Inclui a barra de navegação principal do site #}
     {% include 'parciais/_nav.html' %}
 
+    {# Conteúdo principal da página, onde as mensagens e o bloco de conteúdo serão inseridos #}
     <main class="container mt-4 mb-4">
+        {# Inclui o sistema de mensagens do Django (erros, sucessos, etc.) #}
         {% include 'parciais/_messages.html' %}
-        {% block conteudo %}{% endblock %}
+        {# Bloco para o conteúdo específico de cada página. #}
+        {% block content %}{% endblock %} {# Renomeado para 'content' para ser mais comum e claro #}
     </main>
 
+    {# Inclui o rodapé da página #}
     {% include 'parciais/_footer.html' %}
 
 </body>
